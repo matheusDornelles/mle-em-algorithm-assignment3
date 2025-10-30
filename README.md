@@ -1,205 +1,151 @@
-# Maximum Likelihood Estimation & EM Algorithm - Assignment 3
+Maximum Likelihood Estimation & EM Algorithm – Assignment 3
+!Python
+!Status
+!License
+📋 Project Overview
+This project implements Maximum Likelihood Estimation (MLE) and the Expectation-Maximization (EM) algorithm to analyze Gaussian data with missing values. It compares different parameter estimation strategies and highlights how missing data affects the accuracy of statistical estimates.
+🎯 Goals
 
-![Python](https://img.shields.io/badge/Python-3.13-blue.svg)
-![Status](https://img.shields.io/badge/Status-Complete-green.svg)
-![License](https://img.shields.io/badge/License-MIT-yellow.svg)
+✅ Implement MLE for Gaussian distributions (1D, 2D, 3D)
+✅ Develop EM algorithm to handle missing data
+✅ Compare results between complete and incomplete datasets
+✅ Visualize clusters and algorithm convergence
+✅ Analyze the impact of different initialization strategies
 
-## 📋 Descrição do Projeto
+📊 Datasets
+Category ω₁ (Omega 1)
 
-Este projeto implementa algoritmos de **Estimação de Máxima Verossimilhança (MLE)** e **Expectation-Maximization (EM)** para análise de dados Gaussianos com dados faltantes. O trabalho compara diferentes abordagens de estimação de parâmetros e demonstra o impacto de dados missing na qualidade das estimativas.
+10 three-dimensional points with features [x₁, x₂, x₃]
+Missing data: x₃ is missing in even-indexed points (2, 4, 6, 8, 10)
+Missing rate: 50% in the x₃ dimension
 
-## 🎯 Objetivos
+Category ω₂ (Omega 2)
 
-- ✅ Implementar MLE para distribuições Gaussianas (1D, 2D, 3D)
-- ✅ Desenvolver algoritmo EM para dados com valores faltantes
-- ✅ Comparar resultados entre dados completos e incompletos
-- ✅ Visualizar clusters e convergência dos algoritmos
-- ✅ Analisar impacto de diferentes estratégias de inicialização
+10 complete three-dimensional points
+Used for: Separable model with diagonal covariance matrix
 
-## 📊 Datasets
+🚀 Key Features
+1. Traditional MLE (mle_omega1.py)
 
-### Categoria ω₁ (Omega 1)
-- **10 pontos tridimensionais** com características [x₁, x₂, x₃]
-- **Dados faltantes**: x₃ missing nos pontos pares (2, 4, 6, 8, 10)
-- **Taxa de missing**: 50% na dimensão x₃
+Univariate estimation for each feature
+Bivariate analysis for feature pairs
+Full 3D analysis
+Comparison of mean and variance estimates
 
-### Categoria ω₂ (Omega 2)  
-- **10 pontos tridimensionais** completos
-- **Usado para**: Modelo separável com matriz de covariância diagonal
+2. EM Algorithm (em_algorithm.py / em_algorithm_ascii.py)
 
-## 🚀 Principais Funcionalidades
+Full EM implementation for handling missing data
+Two initialization strategies:
 
-### 1. **MLE Tradicional** (`mle_omega1.py`)
-- Estimação univariada para cada característica
-- Análise bivariada para pares de características
-- Análise trivariada completa (3D)
-- Comparação de estimativas de média e variância
+Zero initialization: x₃ = 0
+Mean-based initialization: x₃ = (x₁ + x₂)/2
 
-### 2. **Algoritmo EM** (`em_algorithm.py` / `em_algorithm_ascii.py`)
-- Implementação completa do EM para dados faltantes
-- Duas estratégias de inicialização:
-  - Inicialização zero: x₃ = 0
-  - Inicialização média: x₃ = (x₁ + x₂)/2
-- Comparação com dados completos (ground truth)
-- Análise de convergência detalhada
 
-### 3. **Visualizações Avançadas**
-- Gráficos 3D dos clusters
-- Análise de convergência
-- Comparações side-by-side
-- Matrizes de correlação
-- Análise de erros por característica
+Comparison with complete data (ground truth)
+Detailed convergence analysis
 
-## 📁 Estrutura do Projeto
+3. Advanced Visualizations
 
-```
+3D cluster plots
+Convergence tracking
+Side-by-side comparisons
+Correlation matrices
+Feature-wise error analysis
+
+📁 Project Structure
 assignment3/
-├── 🔧 Código Principal
-│   ├── mle_omega1.py              # MLE tradicional (dados completos)
-│   ├── em_algorithm.py            # Algoritmo EM (versão Unicode)
-│   └── em_algorithm_ascii.py      # Algoritmo EM (versão ASCII)
+├── 🔧 Core Code
+│   ├── mle_omega1.py              # Traditional MLE (complete data)
+│   ├── em_algorithm.py            # EM algorithm (Unicode version)
+│   └── em_algorithm_ascii.py      # EM algorithm (ASCII version)
 │
-├── 📊 Visualização e Análise
-│   ├── cluster_visualization.py   # Visualizações abrangentes
-│   ├── results_summary.py         # Resumo visual dos resultados
-│   └── show_plots.py             # Visualizador de gráficos
+├── 📊 Visualization & Analysis
+│   ├── cluster_visualization.py   # Comprehensive visualizations
+│   ├── results_summary.py         # Summary of results
+│   └── show_plots.py              # Plot viewer
 │
-├── 📈 Resultados (Gráficos)
+├── 📈 Results (Graphs)
 │   ├── em_convergence_analysis.png
 │   ├── em_complete_comparison.png
 │   └── cluster_analysis_comprehensive.png
 │
-├── 📚 Documentação
-│   ├── README.md                  # Este arquivo
+├── 📚 Documentation
+│   ├── README.md                  # This file
 │   ├── complete_vs_missing_comparison.md
 │   ├── em_summary_report.md
-│   └── requirements.txt           # Dependências
+│   └── requirements.txt           # Dependencies
 │
-└── 📁 Outros
-    ├── em_output.txt             # Logs de execução
-    └── __pycache__/              # Cache Python
-```
+└── 📁 Misc
+    ├── em_output.txt              # Execution logs
+    └── __pycache__/               # Python cache
 
-## 🛠️ Instalação e Uso
+🛠️ Installation & Usage
+Prerequisites
+ShellPython 3.13+pip (Python package manager)Mostrar mais linhas
+1. Clone the repository
+Shellgit clone https://github.com/your-username/mle-em-algorithm-assignment3.gitcd mle-em-algorithm-assignment3Mostrar mais linhas
+2. Install dependencies
+Shellpip install -r requirements.txt``Mostrar mais linhas
+3. Run the algorithms
+Traditional MLE (complete data):
+Shellpython mle_omega1.pyMostrar mais linhas
+EM Algorithm (with missing data):
+Shellpython em_algorithm.py# or ASCII-compatible version:python em_algorithm_ascii.pyMostrar mais linhas
+View results:
+Shellpython show_plots.pypython results_summary.pyMostrar mais linhas
+📊 Key Findings
+✅ EM Algorithm Successes
 
-### Pré-requisitos
-```bash
-Python 3.13+
-pip (gerenciador de pacotes Python)
-```
+Perfect recovery of observed dimensions (x₁, x₂)
+Zero error in μ₁, μ₂, σ₁², σ₂²
+Robust convergence in 16 iterations
+Initialization-independent results
 
-### 1. Clone o repositório
-```bash
-git clone https://github.com/seu-usuario/mle-em-algorithm-assignment3.git
-cd mle-em-algorithm-assignment3
-```
+❌ Identified Limitations
 
-### 2. Instale as dependências
-```bash
-pip install -r requirements.txt
-```
+Systematic bias in the missing dimension (x₃)
+1.684 units error in μ₃ (185% relative error)
+61% underestimation in σ₃²
+Cluster compression (54% volume reduction)
 
-### 3. Execute os algoritmos
+🎯 Key Insights
 
-#### MLE Tradicional (dados completos):
-```bash
-python mle_omega1.py
-```
+MLE preserves information in observed dimensions
+Missing data patterns significantly affect estimates
+EM is robust, but introduces predictable bias
+Cluster structure is partially recoverable
 
-#### Algoritmo EM (dados faltantes):
-```bash
-python em_algorithm.py
-# ou versão ASCII compatível:
-python em_algorithm_ascii.py
-```
+📈 Generated Visuals
+1. Convergence Analysis
 
-#### Visualizar resultados:
-```bash
-python show_plots.py
-python results_summary.py
-```
+Log-likelihood evolution
+Initialization strategy comparison
+Identical convergence behavior
 
-## 📊 Principais Resultados
+2. Complete vs Missing Comparison
 
-### ✅ **Sucessos do Algoritmo EM**
-- **Recuperação perfeita** das dimensões observadas (x₁, x₂)
-- **Erro zero** em μ₁, μ₂, σ₁², σ₂²
-- **Convergência robusta** em 16 iterações
-- **Independência da inicialização**
+Side-by-side parameter estimates
+Feature-wise error analysis
+Visual impact of missing data
 
-### ❌ **Limitações Identificadas**  
-- **Viés sistemático** na dimensão faltante (x₃)
-- **Erro de 1.684 unidades** em μ₃ (185% erro relativo)
-- **Subestimação de 61%** em σ₃²
-- **Compressão do cluster** (54% redução no volume)
+3. Comprehensive Cluster Analysis
 
-### 🎯 **Insights Principais**
-1. **MLE preserva informação** nas dimensões observadas perfeitamente
-2. **Padrão de missing data** afeta significativamente estimativas
-3. **EM é robusto** mas introduz viés previsível
-4. **Estrutura de cluster** é parcialmente recuperável
+3D data visualization
+2D projections
+Correlation matrices
+Detailed error breakdown
 
-## 📈 Visualizações Geradas
+🔬 Theoretical Foundations
+Maximum Likelihood Estimation (MLE)
+Plain Textmath não tem suporte total. O realce de sintaxe é baseado em Plain Text.μ̂ = (1/n) × Σᵢ xᵢΣ̂ = (1/n) × Σᵢ (xᵢ - μ̂)(xᵢ - μ̂)ᵀ``Mostrar mais linhas
+Expectation-Maximization (EM) Algorithm
 
-### 1. **Análise de Convergência**
-- Evolução da log-likelihood
-- Comparação entre estratégias de inicialização
-- Demonstração de convergência idêntica
+E-step: E[X₃|X₁,X₂] = μ₃ + Σ₃₁Σ₁₁⁻¹(X₁₂ - μ₁₂)
+M-step: Update parameters using "completed" data
+Convergence: Based on log-likelihood improvement
 
-### 2. **Comparação Completo vs Missing**
-- Side-by-side dos parâmetros estimados
-- Análise de erros por característica
-- Impacto visual dos dados faltantes
+🙏 Acknowledgments
 
-### 3. **Análise Abrangente de Clusters**
-- Visualização 3D dos dados
-- Projeções 2D
-- Matrizes de correlação
-- Análise detalhada de erros
-
-## 🔬 Fundamentos Teóricos
-
-### **MLE (Maximum Likelihood Estimation)**
-```
-μ̂ = (1/n) × Σᵢ xᵢ
-Σ̂ = (1/n) × Σᵢ (xᵢ - μ̂)(xᵢ - μ̂)ᵀ
-```
-
-### **Algoritmo EM**
-- **E-step**: E[X₃|X₁,X₂] = μ₃ + Σ₃₁Σ₁₁⁻¹(X₁₂ - μ₁₂)
-- **M-step**: Atualização dos parâmetros com dados "completos"
-- **Convergência**: Baseada na log-likelihood
-
-## 🤝 Contribuições
-
-Contribuições são bem-vindas! Por favor:
-
-1. Fork o projeto
-2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
-3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
-4. Push para a branch (`git push origin feature/AmazingFeature`)
-5. Abra um Pull Request
-
-## 📝 Licença
-
-Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICENSE) para detalhes.
-
-## 👥 Autores
-
-- **Seu Nome** - *Trabalho inicial* - [SeuGitHub](https://github.com/seu-usuario)
-
-## 🙏 Agradecimentos
-
-- Implementação baseada em conceitos de Machine Learning e Estatística
-- Algoritmos fundamentados em teoria de Estimação de Máxima Verossimilhança
-- Visualizações inspiradas em práticas de Data Science
-
-## 📚 Referências
-
-1. Dempster, A. P., Laird, N. M., & Rubin, D. B. (1977). Maximum likelihood from incomplete data via the EM algorithm.
-2. Bishop, C. M. (2006). Pattern Recognition and Machine Learning.
-3. Murphy, K. P. (2012). Machine Learning: A Probabilistic Perspective.
-
----
-
-⭐ **Se este projeto foi útil para você, considere dar uma estrela!** ⭐
+Based on concepts from Machine Learning and Statistics
+Algorithms grounded in Maximum Likelihood Estimation theory
+Visualizations inspired by Data Science best practices
